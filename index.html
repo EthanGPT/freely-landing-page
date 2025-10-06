@@ -408,6 +408,7 @@
       text-decoration: none;
       transition: color 0.3s;
       font-size: 15px;
+      cursor: pointer;
     }
 
     .footer-links a:hover {
@@ -436,6 +437,135 @@
     .scroll-indicator span {
       font-size: 32px;
       opacity: 0.4;
+    }
+
+    /* Privacy Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: #ffffff;
+      margin: 5% auto;
+      padding: 0;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 700px;
+      max-height: 80vh;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: #999;
+      font-size: 32px;
+      font-weight: 300;
+      cursor: pointer;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .close:hover {
+      color: #6a42ff;
+    }
+
+    .privacy-content {
+      padding: 40px;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .privacy-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #6a42ff;
+      margin-bottom: 8px;
+    }
+
+    .privacy-content .last-updated {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .privacy-content section {
+      margin-bottom: 28px;
+    }
+
+    .privacy-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .privacy-content p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .privacy-content ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 12px 0;
+    }
+
+    .privacy-content li {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .privacy-content li:before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: #6a42ff;
+      font-weight: bold;
+    }
+
+    .privacy-content a {
+      color: #6a42ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .privacy-content a:hover {
+      text-decoration: underline;
     }
 
     /* Responsive */
@@ -475,6 +605,15 @@
 
       .logo {
         font-size: 24px;
+      }
+
+      .modal-content {
+        width: 95%;
+        margin: 10% auto;
+      }
+      
+      .privacy-content {
+        padding: 30px 24px;
       }
     }
   </style>
@@ -593,12 +732,81 @@
 
   <footer>
     <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
+      <a id="privacyLink">Privacy Policy</a>
       <a href="mailto:support@freely-app.com">Support</a>
       <a href="#">Twitter</a>
     </div>
     <p>© 2025 Freely. All rights reserved.</p>
   </footer>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="privacy-content">
+        <h2>Privacy Policy</h2>
+        <p class="last-updated">Last Updated: October 6, 2025</p>
+        
+        <section>
+          <h3>1. Information We Collect</h3>
+          <p>Freely collects information you provide directly to us, such as when you create an account, add contacts, or use our location sharing features. This may include:</p>
+          <ul>
+            <li>Your name, email address, and phone number</li>
+            <li>Contact information for your emergency contacts</li>
+            <li>Location data when you choose to share it</li>
+            <li>Messages sent through the app</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>2. How We Use Your Information</h3>
+          <p>We use the information we collect to:</p>
+          <ul>
+            <li>Provide, maintain, and improve our services</li>
+            <li>Send location alerts and messages to your designated contacts</li>
+            <li>Communicate with you about your account</li>
+            <li>Ensure the security and integrity of our services</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>3. Information Sharing</h3>
+          <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. We may share your information:</p>
+          <ul>
+            <li>With your emergency contacts when you use our alert features</li>
+            <li>With members of location bubbles you've joined or created</li>
+            <li>When required by law or to protect our rights</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>4. Location Data</h3>
+          <p>Freely only accesses your location when you explicitly choose to share it. You can control location sharing through the app settings and your device's privacy settings. Location data is only shared with contacts you designate.</p>
+        </section>
+
+        <section>
+          <h3>5. Data Security</h3>
+          <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes end-to-end encryption for messages and location data.</p>
+        </section>
+
+        <section>
+          <h3>6. Your Rights</h3>
+          <p>You have the right to:</p>
+          <ul>
+            <li>Access and update your personal information</li>
+            <li>Delete your account and associated data</li>
+            <li>Control location sharing settings</li>
+            <li>Opt out of non-essential communications</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>7. Contact Us</h3>
+          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@freely-app.com">privacy@freely-app.com</a></p>
+        </section>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Smooth scroll
@@ -662,6 +870,33 @@
       card.style.transform = 'translateY(30px)';
       card.style.transition = `all 0.6s ease ${index * 0.1}s`;
       observer.observe(card);
+    });
+
+    // Privacy Policy Modal
+    const modal = document.getElementById('privacyModal');
+    const privacyLink = document.getElementById('privacyLink');
+    const closeBtn = document.querySelector('.close');
+
+    if (privacyLink) {
+      privacyLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+    }
+
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
     });
   </script>
 </body>
