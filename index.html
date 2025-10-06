@@ -320,11 +320,26 @@
       padding: 20px 10px 40px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(106, 66, 255, 0.3) transparent;
     }
 
     .screenshots-scroll::-webkit-scrollbar {
-      display: none;
+      height: 8px;
+    }
+
+    .screenshots-scroll::-webkit-scrollbar-track {
+      background: rgba(106, 66, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .screenshots-scroll::-webkit-scrollbar-thumb {
+      background: rgba(106, 66, 255, 0.3);
+      border-radius: 10px;
+    }
+
+    .screenshots-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(106, 66, 255, 0.5);
     }
 
     .screenshot {
@@ -696,19 +711,22 @@
       
       <div class="screenshots-scroll">
         <div class="screenshot">
-          <img src="./screenshots/screenshot-1.png" alt="Quick Messages" loading="lazy">
+          <img src="screenshots/screenshot-1.png" alt="Quick Messages" loading="lazy">
         </div>
         <div class="screenshot">
-          <img src="./screenshots/screenshot-2.png" alt="Bubble Chat" loading="lazy">
+          <img src="screenshots/screenshot-2.png" alt="Emergency Alert" loading="lazy">
         </div>
         <div class="screenshot">
-          <img src="./screenshots/screenshot-3.png" alt="Live Locations" loading="lazy">
+          <img src="screenshots/screenshot-3.png" alt="Bubbles" loading="lazy">
         </div>
         <div class="screenshot">
-          <img src="./screenshots/screenshot-4.png" alt="Bubbles" loading="lazy">
+          <img src="screenshots/screenshot-4.png" alt="Chat" loading="lazy">
         </div>
         <div class="screenshot">
-          <img src="./screenshots/screenshot-6.png" alt="Home Screen" loading="lazy">
+          <img src="screenshots/screenshot-5.png" alt="Quick Messages" loading="lazy">
+        </div>
+        <div class="screenshot">
+          <img src="screenshots/screenshot-6.png" alt="Home Screen" loading="lazy">
         </div>
       </div>
     </div>
@@ -732,9 +750,8 @@
 
   <footer>
     <div class="footer-links">
-      <a id="privacyLink">Privacy Policy</a>
-      <a href="mailto:support@freely-app.com">Support</a>
-      <a href="#">Twitter</a>
+      <a href="#" id="privacyLink">Privacy Policy</a>
+      <a href="mailto:support@freelyapp.me">Support</a>
     </div>
     <p>© 2025 Freely. All rights reserved.</p>
   </footer>
@@ -802,7 +819,7 @@
 
         <section>
           <h3>7. Contact Us</h3>
-          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@freely-app.com">privacy@freely-app.com</a></p>
+          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@freelyapp.me">support@freelyapp.me</a></p>
         </section>
       </div>
     </div>
@@ -837,18 +854,6 @@
         ticking = true;
       }
     });
-
-    // Screenshot scroll snap smoothing
-    const scrollContainer = document.querySelector('.screenshots-scroll');
-    if (scrollContainer) {
-      scrollContainer.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        scrollContainer.scrollBy({
-          left: e.deltaY < 0 ? -300 : 300,
-          behavior: 'smooth'
-        });
-      });
-    }
 
     // Intersection observer for fade-in animations
     const observerOptions = {
@@ -894,6 +899,14 @@
 
     window.addEventListener('click', function(e) {
       if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Keyboard accessibility for modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
       }
