@@ -95,6 +95,12 @@
       color: #1a1a1a;
     }
 
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
     /* Hero */
     .hero {
       min-height: 100vh;
@@ -110,6 +116,14 @@
       max-width: 800px;
       position: relative;
       z-index: 10;
+    }
+
+    .hero-logo {
+      width: 220px;
+      max-width: 70%;
+      margin: 0 auto 30px;
+      display: block;
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .badge {
@@ -622,6 +636,14 @@
         font-size: 24px;
       }
 
+      .logo img {
+        height: 34px;
+      }
+
+      .hero-logo {
+        width: 180px;
+      }
+
       .modal-content {
         width: 95%;
         margin: 10% auto;
@@ -642,12 +664,13 @@
 
   <header>
     <div class="logo">
-      🛡️ Freely
+      <img src="assets/ios-icon.png" alt="Freely app icon">
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-content">
+      <img class="hero-logo" src="assets/logo-freely.png" alt="Freely logo">
       <div class="badge">
         <span>✨</span> Beta Now Available
       </div>
